@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { FaBox, FaShoppingBag, FaCreditCard } from 'react-icons/fa'
 
 export default function NotFound() {
   return (
@@ -48,10 +49,10 @@ export default function NotFound() {
         </div>
 
         {/* Optional: Helpful Icons */}
-        <div className="pt-8 flex justify-center gap-8 text-4xl opacity-30">
-          <span>📦</span>
-          <span>🛍️</span>
-          <span>💳</span>
+        <div className="pt-8 flex justify-center gap-8 text-4xl opacity-30 text-blue-600">
+          <FaBox />
+          <FaShoppingBag />
+          <FaCreditCard />
         </div>
       </div>
     </div>

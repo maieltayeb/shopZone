@@ -6,22 +6,24 @@ import SearchInput from '../components/searchInput'
  import { useState } from 'react'    
 import ProductSort from '../features/product/productSort'
 import { startTransition } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+
 import { getAllProducts } from '../services/api'
 import { getProducts } from '../features/product/productSlice'
 import { useEffect ,useMemo} from 'react'
 import ProductCard from '../components/productCard'
 import Loader from '../components/ui/loader'
 import { RootState } from '../app/store'
-import type { Product } from '../types'
-
+import type { Product } from '../features/product/product.types'
+import { useSearchParams } from 'react-router-dom'
+import {useAppDispatch,useAppSelector} from "../hooks/useAppStore"
 export default function Products() {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
+  const [searchParams] = useSearchParams()
 
   const [categories, setCategories] = useState(["all"]);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [sort, setSort] = useState("default");
-  const productsData=useSelector((state:RootState)=>state.products.items)
+  const productsData=useAppSelector((state)=>state.products.items)
   const [searchQuery, setSearchQuery] = useState("");
      
 const [inputValue, setInputValue] = useState("");
@@ -74,6 +76,13 @@ useEffect(() => {
   };
   fetchProducts();  
 }, [dispatch])
+
+useEffect(() => {
+  const categoryParam = searchParams.get('category');
+  if (categoryParam) {
+    setSelectedCategory(categoryParam);
+  }
+}, [searchParams])
 
 
 

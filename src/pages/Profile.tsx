@@ -8,6 +8,7 @@ import {
   AiOutlinePlus,
 } from "react-icons/ai";
 import { BiDownload } from "react-icons/bi";
+import { FiInfo } from "react-icons/fi";
 import { toast } from "react-toastify";
 import { useSelector, useDispatch } from "react-redux";
 import { doc, updateDoc, getDoc } from "firebase/firestore";
@@ -31,13 +32,11 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 // storage → الـ instance بتاع Firebase Storage
 import ReauthModal from "../components/reauthModal";
 import { Dialog } from "@headlessui/react";
-import {refreshUser}from '../features/auth/authListener';
-
 import  { useAppDispatch, useAppSelector } from "../hooks/useAppStore";
 import type {ProfileFormData,ResetPasswordFormData, AddressFormData } from '../types/forms.types'
 import { Navigate } from "react-router-dom";
 import { FirebaseError } from "firebase/app";
-import { Address } from "../types";
+import { Address } from "../features/user/user.types";
 export default function Profile() {
   const dispatch = useAppDispatch();
 
@@ -175,7 +174,7 @@ const onProfileSubmit = useCallback(async (data:ProfileFormData) => {
 
     // مفيش أي تغييرات
     if (!emailChanged && !profileChanged) {
-      toast.info("ℹ️ لا توجد تغييرات للحفظ");
+      toast.info("No changes to save");
       return;
     }
 

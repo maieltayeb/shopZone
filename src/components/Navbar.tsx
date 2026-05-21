@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import { FiShoppingCart, FiUser,FiMenu, FiX } from 'react-icons/fi'
+import { FiAlertTriangle } from 'react-icons/fi'
 import  { useState, useEffect, useRef } from 'react'
 import {  useDispatch } from 'react-redux'
 import {useNavigate}from "react-router-dom"
@@ -92,8 +93,8 @@ const getactiveClass = ({ isActive }: { isActive: boolean }) =>
     <>
      {user && !user.emailVerified && (
         <div className="bg-yellow-50 border-b border-yellow-200 px-4 py-2 flex items-center justify-between">
-          <p className="text-yellow-800 text-sm">
-            ⚠️ Please verify your email to get full access.
+          <p className="text-yellow-800 text-sm flex items-center gap-2">
+            <FiAlertTriangle className="text-lg" /> Please verify your email to get full access.
           </p>
           <button
             onClick={() => sendEmailVerification(CurrentAuthUser!)}
