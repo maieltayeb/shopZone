@@ -1,0 +1,20 @@
+@tailwind base;
+/* بيحط CSS reset عشان يوحد الشكل على كل المتصفحات */
+
+/* مثلاً بيعمل */
+/* * { box-sizing: border-box }
+body { margin: 0 }
+h1, h2, h3 { font-size: revert }
+بدونه كل متصفح بيعرض بطريقته:
+Chrome → h1 حجم معين */
+/* Firefox → h1 حجم تاني */
+@tailwind components;
+/* بيحط classes جاهزة من Tailwind */
+/* زي لو عملت */
+/* .btn { ... }
+.card { ... } */
+@tailwind utilities;
+/* css/* ده الأهم — بيحط كل الـ classes بتاعت Tailwind */
+/* .text-blue-500 { color: #3b82f6 }
+.p-4 { padding: 1rem }
+.flex { display: flex }  */
